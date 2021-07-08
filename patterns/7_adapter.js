@@ -68,6 +68,19 @@ let messageCreator = new MessageCreator;
 //////////////////////////////////////////////////////////////
 // Q1. 下記のTimeByStringクラスの内容がMessageCreatorで利用できるような
 // TimeMessageAdapterを作成しましょう。動作確認コードも書いてください
+const TIME_STRINGS = ['朝', '昼', '晩'];
+
+class TimeByString {
+  #string
+  constructor(string) {
+    if(!TIME_STRINGS.includes(string)) { throw Error(`${string}は指定できません。`) }
+    this.#string = string;
+  }
+
+  getString() {
+    return this.#string;
+  }
+}
 
 //////////////////////////////////////////////////////////////
 // Q2. Adapterパターンのクラスの構造は、Decoratorパターンとよく似ています。

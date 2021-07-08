@@ -38,6 +38,9 @@ class Bookshelf {
   }
 
   addBook(book) {
+    // 自分自身（this）のcanAddBookメソッドを呼び出す
+    if (!this.canAddBook(book)) return false;    
+
     this.books.push(book);
     return true;
   }
@@ -60,6 +63,11 @@ class Bookshelf {
   size() {
     return this.books.length;
   }
+
+  // 今この本を追加できますか？」というチェックを行えるメソッド
+  canAddBook(book) {
+    return true; // デフォルトでは何も制限を行わないのでどんな時も本を追加できる
+  }  
 
   getBooks() { return this.books; }
 }
@@ -106,7 +114,6 @@ book.setPageSize(876);
 
 console.log(bookshelf.getBooks());
 
-
 //////////////////////////////////////////////////////////////
 // Q1. LibrarySystemFactoryの別の実装としてDebugLibrarySystemFactoryを作成しましょう。
 // DebugLibrarySystemFactoryのcreateBookshelfは下記のLimitedBookshelfのインスタンスが
@@ -120,25 +127,6 @@ class LimitedBookshelf extends Bookshelf {
 
   canAddBook(book) {
     return this.books.length < this.maxSize;
-  }
-}
-
-class DebugLibrarySystemFactory {
-  static #instance
-
-  static instance() {
-    if(!DebugLibrarySystemFactory.#instance) {
-      DebugLibrarySystemFactory.#instance = new DebugLibrarySystemFactory();
-    }
-    return DebugLibrarySystemFactory.#instance;
-  }
-
-  createBook() {
-    return new Book();
-  }
-
-  createBookshelf() {
-    return new LimitedBookshelf;
   }
 }
 

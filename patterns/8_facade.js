@@ -69,13 +69,6 @@ class GreetingFacade {
     this.#messageCreator.message(adapter);
   }
 
-  greetForString(time) {
-    let timeByString = new TimeByString(time);
-    let adapter = new TimeMessageAdapter(timeByString);
-
-    this.#messageCreator.message(adapter);
-  }
-
   // ... 他にもいくつかの似たようなメソッドがある想定で読んでください
 }
 

@@ -37,6 +37,9 @@ console.log(serializer2.serialize({ title: "坊ちゃん", pageSize: 520 }));
 
 //////////////////////////////////////////////////////////////
 // Q1. 下記のencode 関数を利用して EncodeSerializeStratgyを作成しましょう。
+function encode(object) {
+  return encodeURIComponent(JSON.stringify(object));
+}
 
 //////////////////////////////////////////////////////////////
 // Q2. クラスの構造がほとんど同じになるStateとStrategyの違いについて
