@@ -112,6 +112,7 @@ let book = LibrarySystemFactory.instance().createBook();
 book.setTitle("こころ");
 book.setPageSize(876);
 
+bookshelf.addBook(book);
 console.log(bookshelf.getBooks());
 
 //////////////////////////////////////////////////////////////
